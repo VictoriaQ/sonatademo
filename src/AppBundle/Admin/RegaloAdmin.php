@@ -51,13 +51,7 @@ class RegaloAdmin extends Admin
             ->add('descripcion', null, array('label' => 'Descripción'))
             ->add('destinatario.nombreCompleto', null, array('label' => 'Destinatario'))
             ->add('comprador.nombreCompleto', null, array('label' => 'Destinatario'))
-            ->add('_action', null, array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+            ->add('miField', 'string', array('template' => ':Admin:field_envio_email.html.twig'))
             ;
     }
 
@@ -71,4 +65,5 @@ class RegaloAdmin extends Admin
             ->add('comprador.nombreCompleto', null, array('label' => 'Destinatario'))
             ;
     }
+
 }
