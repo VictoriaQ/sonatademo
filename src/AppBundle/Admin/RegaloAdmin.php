@@ -20,9 +20,9 @@ class RegaloAdmin extends Admin
                 ->end()    
                 ->with('Participantes', array('class' => 'col-md-6'))
                     ->add('destinatario', 'entity', array(
-                        'class' => 'AppBundle\Entity\Destinatario', 'required' => false, 'placeholder' => 'Elige un destinatario'))
+                        'class' => 'AppBundle\Entity\Destinatario', 'required' => false, 'placeholder' => 'Elige un destinatario', 'choice_label' => 'nombreCompleto'))
                     ->add('comprador', null, array(
-                        'class' => 'AppBundle\Entity\Comprador', 'required' => false, 'placeholder' => 'Elige un comprador'))
+                        'class' => 'AppBundle\Entity\Comprador', 'required' => false, 'placeholder' => 'Elige un comprador', 'choice_label' => 'nombreCompleto'))
                 ->end()    
             ->end()    
             ->tab('Tab 2')
@@ -32,8 +32,14 @@ class RegaloAdmin extends Admin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('nombre');
-        $datagridMapper->add('precio');
+        $datagridMapper
+            ->add('nombre')
+            ->add('precio')
+            ->add('destinatario', null, array(), 'entity', array(
+                'class' => 'AppBundle\Entity\Destinatario', 'choice_label' => 'nombreCompleto'))
+            ->add('comprador', null, array(), 'entity', array(
+                'class' => 'AppBundle\Entity\Comprador', 'choice_label' => 'nombreCompleto'))
+            ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -42,8 +48,8 @@ class RegaloAdmin extends Admin
             ->addIdentifier('nombre')
             ->add('precio', 'currency', array('currency' => 'EUR'))
             ->add('descripcion', null, array('label' => 'Descripción'))
-            ->add('destinatario', null, array('editable' => true))
-            ->add('comprador')
+            ->add('destinatario.nombreCompleto')
+            ->add('comprador.nombreCompleto')
             ;
     }
 }

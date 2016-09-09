@@ -24,9 +24,16 @@ class Destinatario
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @orm\column(name="nombre", type="string", length=255)
      */
     private $nombre;
+
+    /**
+     * @var string
+     *
+     * @orm\column(name="apellidos", type="string", length=255)
+     */
+    private $apellidos;
 
     /**
      * __toString
@@ -71,5 +78,38 @@ class Destinatario
     {
         return $this->nombre;
     }
-}
 
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     *
+     * @return Destinatario
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Get nombre completo
+     *
+     * @return string
+     */
+    public function getNombreCompleto()
+    {
+        return $this->nombre.' '.$this->apellidos;
+    }    
+}

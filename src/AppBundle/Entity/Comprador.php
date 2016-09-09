@@ -29,6 +29,13 @@ class Comprador
     private $nombre;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=255)
+     */
+    private $apellidos;
+
+    /**
      * __toString
      *
      * @return string
@@ -71,5 +78,38 @@ class Comprador
     {
         return $this->nombre;
     }
-}
 
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     *
+     * @return Comprador
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Get nombre completo
+     *
+     * @return string
+     */
+    public function getNombreCompleto()
+    {
+        return $this->nombre.' '.$this->apellidos;
+    }
+}
