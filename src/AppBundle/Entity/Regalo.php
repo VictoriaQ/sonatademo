@@ -43,19 +43,24 @@ class Regalo
     private $descripcion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="destinatario", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Destinatario")
      */
     private $destinatario;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="comprador", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Comprador")
      */
     private $comprador;
 
+    /**
+     * __toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
     /**
      * Get id

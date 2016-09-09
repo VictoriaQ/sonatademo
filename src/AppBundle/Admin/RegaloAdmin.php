@@ -11,8 +11,23 @@ class RegaloAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('nombre');
-        $formMapper->add('precio');
+        $formMapper
+            ->tab('Tab 1')
+                ->with('Regalo', array('class' => 'col-md-6'))
+                    ->add('nombre')
+                    ->add('precio')
+                    ->add('descripcion')
+                ->end()    
+                ->with('Participantes', array('class' => 'col-md-6'))
+                    ->add('destinatario', 'entity', array(
+                        'class' => 'AppBundle\Entity\Destinatario', 'required' => false, 'placeholder' => 'Elige un destinatario'))
+                    ->add('comprador', null, array(
+                        'class' => 'AppBundle\Entity\Comprador', 'required' => false, 'placeholder' => 'Elige un comprador'))
+                ->end()    
+            ->end()    
+            ->tab('Tab 2')
+            ->end()    
+            ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -23,7 +38,12 @@ class RegaloAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('nombre');
-        $listMapper->add('precio');
+        $listMapper
+            ->addIdentifier('nombre')
+            ->add('precio', 'currency', array('currency' => 'EUR'))
+            ->add('descripcion', null, array('label' => 'Descripción'))
+            ->add('destinatario', null, array('editable' => true))
+            ->add('comprador')
+            ;
     }
 }
