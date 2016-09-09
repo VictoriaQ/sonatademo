@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class RegaloAdmin extends Admin
 {
@@ -48,8 +49,26 @@ class RegaloAdmin extends Admin
             ->addIdentifier('nombre')
             ->add('precio', 'currency', array('currency' => 'EUR'))
             ->add('descripcion', null, array('label' => 'Descripción'))
-            ->add('destinatario.nombreCompleto')
-            ->add('comprador.nombreCompleto')
+            ->add('destinatario.nombreCompleto', null, array('label' => 'Destinatario'))
+            ->add('comprador.nombreCompleto', null, array('label' => 'Destinatario'))
+            ->add('_action', null, array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
+            ;
+    }
+
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper    
+            ->add('nombre')
+            ->add('precio', 'currency', array('currency' => 'EUR'))
+            ->add('descripcion', null, array('label' => 'Descripción'))
+            ->add('destinatario.nombreCompleto', null, array('label' => 'Destinatario'))
+            ->add('comprador.nombreCompleto', null, array('label' => 'Destinatario'))
             ;
     }
 }
