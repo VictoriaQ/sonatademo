@@ -50,7 +50,8 @@ class RegaloAdmin extends Admin
             ->add('precio', 'currency', array('currency' => 'EUR'))
             ->add('descripcion', null, array('label' => 'Descripción'))
             ->add('destinatario.nombreCompleto', null, array('label' => 'Destinatario'))
-            ->add('comprador.nombreCompleto', null, array('label' => 'Destinatario'))
+            ->add('comprador.nombreCompleto', null, array('label' => 'Comprador'))
+            ->add('entregado', null, array('editable' => true))
             ->add('miField', 'string', array('template' => ':Admin:field_envio_email.html.twig'))
             ;
     }
@@ -62,8 +63,23 @@ class RegaloAdmin extends Admin
             ->add('precio', 'currency', array('currency' => 'EUR'))
             ->add('descripcion', null, array('label' => 'Descripción'))
             ->add('destinatario.nombreCompleto', null, array('label' => 'Destinatario'))
-            ->add('comprador.nombreCompleto', null, array('label' => 'Destinatario'))
+            ->add('comprador.nombreCompleto', null, array('label' => 'Comprador'))
             ;
     }
 
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $rootAlias = $query->getRootAliases()[0];
+        $query
+            ->andWhere(
+                $query->expr()->eq($rootAlias.'.entregado', ':entregado')
+            )            
+            ;
+        
+        $query->setParameter('entregado', false);
+
+        return $query;
+    }
+    
 }

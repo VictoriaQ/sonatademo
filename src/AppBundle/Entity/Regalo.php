@@ -53,6 +53,19 @@ class Regalo
     private $comprador;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $entregado;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->entregado = false;
+    }
+
+    /**
      * __toString
      *
      * @return string
@@ -190,5 +203,29 @@ class Regalo
     public function getComprador()
     {
         return $this->comprador;
+    }
+
+    /**
+     * Set entregado
+     *
+     * @param boolean $entregado
+     *
+     * @return Regalo
+     */
+    public function setEntregado($entregado)
+    {
+        $this->entregado = $entregado;
+
+        return $this;
+    }
+
+    /**
+     * Get entregado
+     *
+     * @return boolean
+     */
+    public function getEntregado()
+    {
+        return $this->entregado;
     }
 }
