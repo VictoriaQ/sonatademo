@@ -22,4 +22,18 @@ class RegaloAdminController extends Controller
         return new RedirectResponse($this->admin->generateUrl('list'));
 
     }
+
+    public function batchActionSendEmail($selectedModelQuery)
+    {
+        if ($this->admin->isGranted('EDIT') === false) {
+            throw new AccessDeniedException();
+        }
+
+        // Here code to send emails
+        
+        $this->addFlash('sonata_flash_success', 'Emails enviados');
+
+        return new RedirectResponse($this->admin->generateUrl('list'));
+    }
+
 }
