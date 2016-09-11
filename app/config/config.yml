@@ -74,6 +74,11 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+
 sonata_admin:
     templates:
         edit: ':Admin:edit.html.twig'
@@ -85,4 +90,14 @@ sonata_admin:
                 icon:            '<i class="fa fa-database"></i>'
                 items:
                     - admin.regalo
-                
+    security:
+        handler: sonata.admin.security.handler.role                
+        information:
+            EDIT: EDIT
+            LIST: LIST
+            CREATE: CREATE
+            VIEW: VIEW
+            DELETE: DELETE
+            EXPORT: EXPORT
+            OPERATOR: OPERATOR
+            MASTER: MASTER
