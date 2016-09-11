@@ -36,6 +36,13 @@ class Destinatario
     private $apellidos;
 
     /**
+     * @var string
+     *
+     * @orm\column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
      * __toString
      *
      * @return string
@@ -112,4 +119,28 @@ class Destinatario
     {
         return $this->nombre.' '.$this->apellidos;
     }    
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Destinatario
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 }

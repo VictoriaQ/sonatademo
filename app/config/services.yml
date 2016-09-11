@@ -6,7 +6,7 @@ parameters:
 services:
     admin.regalo:
         class: AppBundle\Admin\RegaloAdmin
-        arguments: [~, AppBundle\Entity\Regalo, ~]
+        arguments: [~, AppBundle\Entity\Regalo, AppBundle:RegaloAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Regalos }
         calls:
