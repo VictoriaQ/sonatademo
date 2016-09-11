@@ -18,6 +18,7 @@ class RegaloAdmin extends Admin
                     ->add('nombre')
                     ->add('precio')
                     ->add('descripcion')
+                    ->add('estado')
                 ->end()    
                 ->with('Participantes', array('class' => 'col-md-6'))
                     ->add('destinatario', 'entity', array(
@@ -36,6 +37,21 @@ class RegaloAdmin extends Admin
         $datagridMapper
             ->add('nombre')
             ->add('precio')
+            ->add('miFiltro', 'doctrine_orm_callback',
+array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+
+                    $queryBuilder->andWhere($alias.'.estado != :estado');
+                    $queryBuilder->setParameter('estado', 'entregado');
+
+                    return true;
+                },
+                    'field_type' => 'checkbox',
+                    'label' => 'No entregados'
+            ))            
             ->add('destinatario', null, array(), 'entity', array(
                 'class' => 'AppBundle\Entity\Destinatario', 'choice_label' => 'nombreCompleto'))
             ->add('comprador', null, array(), 'entity', array(
@@ -51,7 +67,7 @@ class RegaloAdmin extends Admin
             ->add('descripcion', null, array('label' => 'Descripción'))
             ->add('destinatario.nombreCompleto', null, array('label' => 'Destinatario'))
             ->add('comprador.nombreCompleto', null, array('label' => 'Comprador'))
-            ->add('entregado', null, array('editable' => true))
+            ->add('estado', 'string', array('template' => ':Admin:field_estado.html.twig'))
             ->add('miField', 'string', array('template' => ':Admin:field_envio_email.html.twig'))
             ;
     }
@@ -67,19 +83,19 @@ class RegaloAdmin extends Admin
             ;
     }
 
-    public function createQuery($context = 'list')
-    {
-        $query = parent::createQuery($context);
-        $rootAlias = $query->getRootAliases()[0];
-        $query
-            ->andWhere(
-                $query->expr()->eq($rootAlias.'.entregado', ':entregado')
-            )            
-            ;
-        
-        $query->setParameter('entregado', false);
+    //public function createQuery($context = 'list')
+    //{
+    //    $query = parent::createQuery($context);
+    //    $rootAlias = $query->getRootAliases()[0];
+    //    $query
+    //        ->andWhere(
+    //            $query->expr()->eq($rootAlias.'.entregado', ':entregado')
+    //        )            
+    //        ;
+    //    
+    //    $query->setParameter('entregado', false);
 
-        return $query;
-    }
+    //    return $query;
+    //}
     
 }

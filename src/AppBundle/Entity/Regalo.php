@@ -58,6 +58,11 @@ class Regalo
     private $entregado;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $estado;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -227,5 +232,29 @@ class Regalo
     public function getEntregado()
     {
         return $this->entregado;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     *
+     * @return Regalo
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }

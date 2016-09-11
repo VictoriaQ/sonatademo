@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+{% if object.estado == 'pendiente' %}
+<span class="label label-danger">{{ object.estado }}</span>
+{% elseif object.estado == 'entregado' %}
+<span class="label label-success">{{ object.estado }}</span>
+{% elseif object.estado == 'comprado' %}
+<span class="label label-warning">{{ object.estado }}</span>
+{% endif %}
+{% endblock %}
