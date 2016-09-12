@@ -1,0 +1,11 @@
+.logo img {
+    display: inline;
+    padding-bottom: 4px;
+    max-height: 100%;
+    max-width: 160px;
+}
+
+
+.skin-black .main-header .logo, .skin-black .main-header .navbar{
+    background-color: #f6c82a;
+}
