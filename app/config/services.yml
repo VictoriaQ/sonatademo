@@ -16,4 +16,11 @@ services:
         arguments: [~, AppBundle\Entity\Regalo, AppBundle:RegaloPasadoAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Pasados }
+    admin.configuracion:
+        class: AppBundle\Admin\ConfiguracionAdmin
+        arguments: [~, AppBundle\Entity\Configuracion, AppBundle:ConfiguracionAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Mi configuración }
+        calls:
+            - [ setTemplate, [list, :Admin:configuracion.html.twig]]
 

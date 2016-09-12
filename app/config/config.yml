@@ -95,6 +95,12 @@ sonata_admin:
                 items:
                     - admin.regalo
                     - admin.regalo_pasado
+            demo.admin.settings:
+                label:           Configuración
+                label_catalogue: AppBundle
+                icon:            '<i class="fa fa-gear"></i>'
+                items:
+                    - admin.configuracion
     security:
         handler: sonata.admin.security.handler.role                
         information:
