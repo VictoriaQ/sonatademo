@@ -101,6 +101,7 @@ sonata_admin:
                 icon:            '<i class="fa fa-gear"></i>'
                 items:
                     - admin.configuracion
+                roles: [ ROLE_SUPER_ADMIN ]                      
     security:
         handler: sonata.admin.security.handler.role                
         information:
