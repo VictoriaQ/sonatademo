@@ -95,6 +95,13 @@ sonata_admin:
                 items:
                     - admin.regalo
                     - admin.regalo_pasado
+            demo.admin.user:
+                label:           Participantes
+                label_catalogue: AppBundle
+                icon:            '<i class="fa fa-user"></i>'
+                items:
+                    - admin.comprador
+                    - admin.destinatario
             demo.admin.settings:
                 label:           Configuración
                 label_catalogue: AppBundle

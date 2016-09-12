@@ -23,4 +23,13 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Mi configuración }
         calls:
             - [ setTemplate, [list, :Admin:configuracion.html.twig]]
-
+    admin.comprador:
+        class: AppBundle\Admin\CompradorAdmin
+        arguments: [~, AppBundle\Entity\Comprador, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Compradores }
+    admin.destinatario:
+        class: AppBundle\Admin\DestinatarioAdmin
+        arguments: [~, AppBundle\Entity\Destinatario, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Destinatarios }
