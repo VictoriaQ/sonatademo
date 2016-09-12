@@ -85,15 +85,16 @@ sonata_admin:
     templates:
         edit: ':Admin:edit.html.twig'
         layout: ':Admin:layout.html.twig'
-        dashboard: ':Admin:dashboard.html.twig'
+        #dashboard: ':Admin:dashboard.html.twig'
     dashboard:
         groups:
             demo.admin.main:
-                label:           Admin
+                label:           Regalos
                 label_catalogue: AppBundle
-                icon:            '<i class="fa fa-database"></i>'
+                icon:            '<i class="fa fa-gift"></i>'
                 items:
                     - admin.regalo
+                    - admin.regalo_pasado
     security:
         handler: sonata.admin.security.handler.role                
         information:

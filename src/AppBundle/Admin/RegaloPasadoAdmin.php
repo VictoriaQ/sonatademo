@@ -9,31 +9,12 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class RegaloAdmin extends Admin
+class RegaloPasadoAdmin extends Admin
 {
 
-    protected $baseRouteName = 'regalo';
+    protected $baseRouteName = 'regalo_pasado';
 
-    protected $baseRoutePattern = 'regalo';
-
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->add('sendEmail', $this->getRouterIdParameter().'/send-email');
-    }
-
-    public function getBatchActions()
-    {
-        $actions = parent::getBatchActions();
-
-        if ($this->hasRoute('edit') && $this->isGranted('EDIT')) {
-            $actions['send_email'] = [
-                'label'            => 'Send email',
-                'ask_confirmation' => false,
-                ];
-        }
-
-        return $actions;
-    }
+    protected $baseRoutePattern = 'regalo-pasado';
 
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -89,11 +70,9 @@ array(
         $listMapper
             ->addIdentifier('nombre')
             ->add('precio', 'currency', array('currency' => 'EUR'))
-            ->add('descripcion', null, array('label' => 'Descripción'))
             ->add('destinatario.nombreCompleto', null, array('label' => 'Destinatario'))
             ->add('comprador.nombreCompleto', null, array('label' => 'Comprador'))
             ->add('estado', 'string', array('template' => ':Admin:field_estado.html.twig'))
-            ->add('miField', 'string', array('template' => ':Admin:field_envio_email.html.twig'))
             ;
     }
 
@@ -118,7 +97,7 @@ array(
             )            
             ;
         
-        $query->setParameter('entregado', false);
+        $query->setParameter('entregado', true);
 
         return $query;
     }
