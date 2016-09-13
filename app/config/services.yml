@@ -28,8 +28,15 @@ services:
         arguments: [~, AppBundle\Entity\Comprador, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Compradores }
+        calls:
+            - [ addChild, [ '@admin.pago' ] ]
     admin.destinatario:
         class: AppBundle\Admin\DestinatarioAdmin
         arguments: [~, AppBundle\Entity\Destinatario, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Destinatarios }
+    admin.pago:
+        class: AppBundle\Admin\PagoAdmin
+        arguments: [~, AppBundle\Entity\Pago, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Pagos }
