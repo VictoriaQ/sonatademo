@@ -63,11 +63,18 @@ class Regalo
     private $estado;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Tienda", inversedBy="regalos")
+     * @ORM\JoinTable(name="regalos_tiendas")
+     */
+    private $tiendas;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->entregado = false;
+        $this->tiendas = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -256,5 +263,39 @@ class Regalo
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * Add tienda
+     *
+     * @param \AppBundle\Entity\Tienda $tienda
+     *
+     * @return Regalo
+     */
+    public function addTienda(\AppBundle\Entity\Tienda $tienda)
+    {
+        $this->tiendas[] = $tienda;
+
+        return $this;
+    }
+
+    /**
+     * Remove tienda
+     *
+     * @param \AppBundle\Entity\Tienda $tienda
+     */
+    public function removeTienda(\AppBundle\Entity\Tienda $tienda)
+    {
+        $this->tiendas->removeElement($tienda);
+    }
+
+    /**
+     * Get tiendas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTiendas()
+    {
+        return $this->tiendas;
     }
 }

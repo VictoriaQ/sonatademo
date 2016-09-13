@@ -38,21 +38,25 @@ class RegaloAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->tab('Tab 1')
-                ->with('Regalo', array('class' => 'col-md-6'))
-                    ->add('nombre')
-                    ->add('precio')
-                    ->add('descripcion')
-                    ->add('estado')
-                ->end()    
-                ->with('Participantes', array('class' => 'col-md-6'))
-                    ->add('destinatario', 'entity', array(
-                        'class' => 'AppBundle\Entity\Destinatario', 'required' => false, 'placeholder' => 'Elige un destinatario', 'choice_label' => 'nombreCompleto'))
-                    ->add('comprador', null, array(
-                        'class' => 'AppBundle\Entity\Comprador', 'required' => false, 'placeholder' => 'Elige un comprador', 'choice_label' => 'nombreCompleto'))
-                ->end()    
+            ->with('Regalo', array('class' => 'col-md-6'))
+                ->add('nombre')
+                ->add('precio')
+                ->add('descripcion')
+                ->add('estado')
             ->end()    
-            ->tab('Tab 2')
+            ->with('Participantes', array('class' => 'col-md-6'))
+                ->add('destinatario', 'entity', array(
+                    'class' => 'AppBundle\Entity\Destinatario', 'required' => false, 'placeholder' => 'Elige un destinatario', 'choice_label' => 'nombreCompleto'))
+                ->add('comprador', null, array(
+                    'class' => 'AppBundle\Entity\Comprador', 'required' => false, 'placeholder' => 'Elige un comprador', 'choice_label' => 'nombreCompleto'))
+            ->end()    
+            ->with('Establecimientos', array('class' => 'col-md-6'))
+                ->add('tiendas', 'sonata_type_model', array(
+                    'by_reference' => false,
+                    'expanded' => true,
+                    'multiple' => true,
+                    'label' => 'Tiendas')
+                )
             ->end()    
             ;
     }

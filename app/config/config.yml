@@ -102,6 +102,12 @@ sonata_admin:
                 items:
                     - admin.comprador
                     - admin.destinatario
+            demo.admin.tienda:
+                label:           Establecimientos
+                label_catalogue: AppBundle
+                icon:            '<i class="fa fa-home"></i>'
+                items:
+                    - admin.tienda
             demo.admin.settings:
                 label:           Configuración
                 label_catalogue: AppBundle

@@ -40,3 +40,8 @@ services:
         arguments: [~, AppBundle\Entity\Pago, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Pagos }
+    admin.tienda:
+        class: AppBundle\Admin\TiendaAdmin
+        arguments: [~, AppBundle\Entity\Tienda, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Tiendas }

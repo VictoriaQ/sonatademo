@@ -42,22 +42,11 @@ class CompradorAdmin extends Admin
                 ->add('apellidos')
             ->end()
             ->with('Pagos', array('class' => 'col-md-6'))
-            ->add('pagos', 'sonata_type_collection', array(            
-                'type_options' => array(
-                    'delete' => false,
-                    'delete_options' => array(
-                        'type'         => 'hidden',
-                        'type_options' => array(
-                            'mapped'   => false,
-                            'required' => false,
-                        )
-                    )
-                )
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable' => 'position',
-            ))            
+                ->add('pagos', 'sonata_type_collection', array(
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                ))            
             ->end()
             ;
     }
