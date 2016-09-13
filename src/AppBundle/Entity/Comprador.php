@@ -60,7 +60,7 @@ class Comprador
     private $pais;
 
     /**
-     * @ORM\OneToMany(targetEntity="Pago", mappedBy="comprador")
+     * @ORM\OneToMany(targetEntity="Pago", mappedBy="comprador", cascade={"persist"})
      */
     private $pagos;
 
