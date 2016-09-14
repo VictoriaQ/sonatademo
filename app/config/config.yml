@@ -116,18 +116,18 @@ sonata_admin:
                     - admin.configuracion
                     - route:        config_myEdit
                       label:        Mi configuración
-                roles: [ ROLE_SUPER_ADMIN ]                      
-    security:
-        handler: sonata.admin.security.handler.role                
-        information:
-            EDIT: EDIT
-            LIST: LIST
-            CREATE: CREATE
-            VIEW: VIEW
-            DELETE: DELETE
-            EXPORT: EXPORT
-            OPERATOR: OPERATOR
-            MASTER: MASTER
+                #roles: [ ROLE_SUPER_ADMIN ]                      
+    #security:
+    #    handler: sonata.admin.security.handler.role                
+    #    information:
+    #        EDIT: EDIT
+    #        LIST: LIST
+    #        CREATE: CREATE
+    #        VIEW: VIEW
+    #        DELETE: DELETE
+    #        EXPORT: EXPORT
+    #        OPERATOR: OPERATOR
+    #        MASTER: MASTER
     assets:
         stylesheets:
 
