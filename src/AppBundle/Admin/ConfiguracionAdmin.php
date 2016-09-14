@@ -15,6 +15,11 @@ class ConfiguracionAdmin extends Admin
 
     protected $baseRoutePattern = 'config';
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('myEdit', 'my-edit');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

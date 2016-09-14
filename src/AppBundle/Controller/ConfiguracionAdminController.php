@@ -8,11 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ConfiguracionAdminController extends Controller
 {
-    /**
-     * Sonata llama list action al action principal del admin,
-     * pero en este caso queremos un edit
-     */    
-    public function listAction(Request $request = null)
+    public function myEditAction(Request $request = null)
     {
         $this->admin->checkAccess('edit');        
 
@@ -31,8 +27,8 @@ class ConfiguracionAdminController extends Controller
             $em->flush();
         }
 
-        return $this->render($this->admin->getTemplate('list'), array(
-            'action'     => 'list',
+        return $this->render($this->admin->getTemplate('myEdit'), array(
+            'action'     => 'myEdit',
             'form'       => $form->createView(),
         ), null, $request);
     }    

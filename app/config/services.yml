@@ -22,7 +22,7 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Mi configuración }
         calls:
-            - [ setTemplate, [list, :Admin:configuracion.html.twig]]
+            - [ setTemplate, [myEdit, :Admin:configuracion.html.twig]]
     admin.comprador:
         class: AppBundle\Admin\CompradorAdmin
         arguments: [~, AppBundle\Entity\Comprador, ~]

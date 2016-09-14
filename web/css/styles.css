@@ -9,3 +9,11 @@
 .skin-black .main-header .logo, .skin-black .main-header .navbar{
     background-color: #f6c82a;
 }
+
+.my-edit input{
+    padding: 5px;
+    margin: 5px 10px;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #d2d6de;    
+}

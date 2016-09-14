@@ -114,6 +114,8 @@ sonata_admin:
                 icon:            '<i class="fa fa-gear"></i>'
                 items:
                     - admin.configuracion
+                    - route:        config_myEdit
+                      label:        Mi configuración
                 roles: [ ROLE_SUPER_ADMIN ]                      
     security:
         handler: sonata.admin.security.handler.role                
